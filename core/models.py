@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class BaseModel(models.Model):
     name = models.CharField(
         max_length=255,
@@ -37,4 +38,10 @@ class Profile(BaseModel):
         on_delete=models.SET_NULL,
         related_name="profile",
         verbose_name="Пользователь"
+    )
+    subscription = models.ManyToManyField(
+        to=User,
+        blank=True,
+        related_name="subscriber",
+        verbose_name="Подписка"
     )

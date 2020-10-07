@@ -8,12 +8,12 @@ class PublicationAdmin(admin.ModelAdmin):
         "id",
         "image",
         "description",
-        "user",
+        "publisher",
         "deleted"
     ]
     fields = [
         "image",
         "description",
         "deleted",
-        "user"
+        "publisher"
     ]
