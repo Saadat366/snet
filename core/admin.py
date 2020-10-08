@@ -12,4 +12,4 @@ class ProfileAdmin(admin.ModelAdmin):
         "updated",
         "deleted"
     ]
-    fields = ["user", "subscription"]
+    exclude = ["name", "deleted"]

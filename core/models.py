@@ -45,3 +45,11 @@ class Profile(BaseModel):
         related_name="subscriber",
         verbose_name="Подписка"
     )
+    description = models.TextField(
+        null=True, blank=True,
+        verbose_name="О профиле"
+    )
+    profile_photo = models.ImageField(
+        default="default_pic.jpg/",
+        upload_to="profiles"
+    )

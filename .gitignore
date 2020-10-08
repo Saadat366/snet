@@ -1,5 +1,6 @@
 __pycache__/
 db.sqlite3
 snet/settings.py
-media/
 static/
+media/*
+!/media/default_pic.jpg
