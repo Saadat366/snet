@@ -6,3 +6,9 @@ class PublicationSerializer(ModelSerializer):
     class Meta:
         model = Publication
         fields = ["pk", "image", "description", "publisher", "created"]
+
+
+class UserPublicationListSerializer(ModelSerializer):
+    class Meta:
+        model = Publication
+        fields = ["pk", "image"]

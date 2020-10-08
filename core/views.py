@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from rest_framework.generics import RetrieveAPIView, ListAPIView
+from rest_framework.generics import RetrieveAPIView, \
+    ListAPIView, RetrieveUpdateAPIView
 
 from .serializers import *
 from .models import Profile
@@ -35,3 +36,18 @@ class SubscribersListView(ListAPIView):
         user = User.objects.get(username=username)
         lst = User.objects.filter(profile__subscription__in=[user])
         return lst
+
+
+class UserEditView(RetrieveUpdateAPIView):
+    serializer_class = UserEditSerializer
+    queryset = User.objects.all()
+
+
+class ProfileView(RetrieveAPIView):
+    serializer_class = ProfileViewSerializer
+    queryset = Profile.objects.all()
+
+
+class ProfileEditView(RetrieveUpdateAPIView):
+    serializer_class = ProfileEditSerializer
+    queryset = Profile.objects.all()

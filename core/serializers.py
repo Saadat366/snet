@@ -73,3 +73,21 @@ class UserListSerializer(serializers.ModelSerializer):
     
     def get_profile_photo(self, obj):
         return obj.profile.profile_photo.url
+
+
+class UserEditSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["username", "first_name", "last_name"]
+
+
+class ProfileViewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ["user", "description", "profile_photo"]
+
+
+class ProfileEditSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ["description", "profile_photo"]
