@@ -31,3 +31,18 @@ class UserPublicationListView(ListAPIView):
         user = User.objects.get(username=self.kwargs["username"])
         publications = Publication.objects.filter(publisher=user)
         return publications
+
+
+class FeedListView(ListAPIView):
+    serializer_class = PublicationSerializer
+    def get_queryset(self):
+        user = User.objects.get(username=self.kwargs["username"])
+        # publications = Publication.objects.filter(publisher__in=user.profile.subscription.all())
+        publications = Publication.objects.filter(publisher__subscriber__in=[user.profile])
+
+        # publications = []
+        # for publisher in user.profile.subscription.all():
+        #     pubs = Publication.objects.filter(publisher=publisher)
+        #     publications += pubs
+
+        return publications
